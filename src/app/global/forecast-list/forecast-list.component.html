@@ -1,0 +1,12 @@
+<div>
+    <h1 class="is-size-4">Weather forecast</h1>
+    <div class="columns">
+        <div *ngFor="let item of forecast | slice:0:8"
+             class="column">
+            <app-icon-weather [code]="item.iconCode"
+                              class="image is-48x48"></app-icon-weather>
+            <span class="is-size-7 tag is-light has-text-weight-bold">{{item.temperature | celsius}}</span>
+            <span class="is-size-7">{{item.time | date: 'H:mm' }}</span>
+        </div>
+    </div>
+</div>

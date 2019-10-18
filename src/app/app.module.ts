@@ -14,6 +14,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HttpClientModule} from '@angular/common/http';
 import {SearchComponent} from './global/search/search.component';
 import {FormsModule} from '@angular/forms';
+import { ForecastListComponent } from './global/forecast-list/forecast-list.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import {FormsModule} from '@angular/forms';
         CardComponent,
         CelsiusPipe,
         FlagComponent,
-        SearchComponent
+        SearchComponent,
+        ForecastListComponent
     ],
     imports: [
         BrowserModule,
