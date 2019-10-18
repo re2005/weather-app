@@ -16,6 +16,7 @@ describe('IconWeatherComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(IconWeatherComponent);
         component = fixture.componentInstance;
+        component.code = '10n';
         fixture.detectChanges();
     });
 

@@ -1,29 +1,39 @@
-import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CityComponent} from './city.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
+import {of} from 'rxjs';
+import {ApiService} from '../../services/api.service';
+
+const weatherListMock = require('../../mocks/list-weather-response.json');
+const forecastListMock = require('../../mocks/list-forecast-response.json');
 
 describe('CityComponent', () => {
     let component: CityComponent;
     let fixture: ComponentFixture<CityComponent>;
 
-    const mockRoute: any = {snapshot: {}};
+    let api: ApiService;
+
+
+    const mockApiService = {
+        getCitiesWeatherById: () => of(weatherListMock),
+        getCityForecastById: () => of(forecastListMock)
+    };
 
     beforeEach(async(() => {
-
         TestBed.configureTestingModule({
             declarations: [CityComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             providers: [
                 {
-                    provide: HttpClient
+                    provide: ApiService,
+                    useValue: mockApiService
                 },
                 {
                     provide: ActivatedRoute,
                     useValue: {
-                        params: mockRoute
+                        params: of({id: 1234})
                     }
                 }
             ]
@@ -34,14 +44,23 @@ describe('CityComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(CityComponent);
         component = fixture.componentInstance;
-
-        mockRoute.parent.params.next({id: 1234});
-        mockRoute.params.next({paramName: 'id'});
-
+        api = fixture.debugElement.injector.get(ApiService);
         fixture.detectChanges();
     });
 
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should show city card', () => {
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelectorAll('app-city-card').length).toEqual(1);
+
+    });
+
+    it('should show forecast list', () => {
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelectorAll('app-forecast-list').length).toEqual(1);
+    });
+
 });

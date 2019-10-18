@@ -16,6 +16,7 @@ describe('FlagComponent', () => {
         fixture = TestBed.createComponent(FlagComponent);
         component = fixture.componentInstance;
         component.countryCode = 'NL';
+        component.code = 'nl';
         fixture.detectChanges();
     });
 
