@@ -5,20 +5,14 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CelsiusPipe} from '../../pipes/celsius.pipe';
 import {CityWeather} from '../../models/city-weather.model';
 
+const cityMock = require('../../mocks/weather-response.json');
+
+
 describe('CardComponent', () => {
     let component: CardComponent;
     let fixture: ComponentFixture<CardComponent>;
 
-    const cityWeather = new CityWeather({
-        id: 1234,
-        name: 'Amsterdam',
-        country: 'NL',
-        iconCode: '02d',
-        description: 'cloudy',
-        windSpeed: 12,
-        windDirection: 120,
-        temperature: 11,
-    });
+    const cityWeather = new CityWeather(cityMock);
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -38,5 +32,10 @@ describe('CardComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should create title with correct name', () => {
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelector('.title').textContent).toContain('Amsterdam');
     });
 });
