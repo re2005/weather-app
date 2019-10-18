@@ -11,10 +11,12 @@ import {CardComponent} from './global/card/card.component';
 import {CelsiusPipe} from './pipes/celsius.pipe';
 import {FlagComponent} from './global/flag/flag.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {SearchComponent} from './global/search/search.component';
 import {FormsModule} from '@angular/forms';
-import { ForecastListComponent } from './global/forecast-list/forecast-list.component';
+import {ForecastListComponent} from './global/forecast-list/forecast-list.component';
+import {CachingInterceptor} from './services/api-cache.service';
+import {RequestCache} from './services/api-request.service';
 
 @NgModule({
     declarations: [
@@ -36,7 +38,13 @@ import { ForecastListComponent } from './global/forecast-list/forecast-list.comp
         HttpClientModule,
         FormsModule
     ],
-    providers: [],
+    providers: [
+        RequestCache,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: CachingInterceptor, multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
