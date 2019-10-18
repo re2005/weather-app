@@ -3,3 +3,11 @@
     vertical-align: middle;
     margin-right: 10px;
 }
+
+
+:host {
+    ::ng-deep router-outlet ~ .ng-animating {
+        position: absolute;
+        width: 100%;
+    }
+}
