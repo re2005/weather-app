@@ -12,6 +12,8 @@ import {CelsiusPipe} from './pipes/celsius.pipe';
 import {FlagComponent} from './global/flag/flag.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HttpClientModule} from '@angular/common/http';
+import {SearchComponent} from './global/search/search.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -21,14 +23,16 @@ import {HttpClientModule} from '@angular/common/http';
         IconWeatherComponent,
         CardComponent,
         CelsiusPipe,
-        FlagComponent
+        FlagComponent,
+        SearchComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         FontAwesomeModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

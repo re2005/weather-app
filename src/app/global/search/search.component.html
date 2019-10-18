@@ -1,0 +1,41 @@
+<div>
+
+    <label for="city" class="label">
+        Search for a city:
+    </label>
+
+    <div class="field is-grouped">
+
+        <div class="control is-expanded">
+            <input id="city"
+                   [(ngModel)]="searchInput"
+                   (keydown)="onKeydown($event)"
+                   class="input"
+                   placeholder="City name">
+        </div>
+        <div class="control">
+            <button class="button is-info"
+                    (click)="search()"
+                    [disabled]="!searchInput">
+                Search
+            </button>
+        </div>
+    </div>
+
+    <ul class="list is-hoverable" *ngIf="cities">
+        <li class="list-item" *ngFor="let city of cities">
+            {{city.name}}
+            <app-flag [countryCode]="city.country"></app-flag>
+            <button class="button is-info is-small"
+                    (click)="addCity(city.id)">
+                add
+            </button>
+        </li>
+    </ul>
+    <div *ngIf="cities?.length === 0">
+        No cities were founded
+    </div>
+    <div *ngIf="hasError">
+        Oooops an error occurred, maybe try again?
+    </div>
+</div>
