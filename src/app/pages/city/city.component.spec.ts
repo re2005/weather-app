@@ -13,9 +13,6 @@ describe('CityComponent', () => {
     let component: CityComponent;
     let fixture: ComponentFixture<CityComponent>;
 
-    let api: ApiService;
-
-
     const mockApiService = {
         getCitiesWeatherById: () => of(weatherListMock),
         getCityForecastById: () => of(forecastListMock)
@@ -44,7 +41,6 @@ describe('CityComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(CityComponent);
         component = fixture.componentInstance;
-        api = fixture.debugElement.injector.get(ApiService);
         fixture.detectChanges();
     });
 
