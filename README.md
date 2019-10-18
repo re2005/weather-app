@@ -1,4 +1,9 @@
-# Welcome to the WeatherApp!
+![WeatherApp](https://raw.githubusercontent.com/re2005/weather-app/master/src/assets/weather.png?token=AAWI7JPKD2XRNX57DQMZZX25VI5XQ "WeatherApp")
+
+
+# Welcome to WeatherApp!
+
+[DEMO](https://www.notfound.com.br/off/weather-app/)
 
 The app is kept as simple and lightweight as possible.
 It's using Bulma as css framework and FontAwesome for cool icons.
