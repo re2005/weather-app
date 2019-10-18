@@ -9,8 +9,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {IconWeatherComponent} from './global/icon-weather/icon-weather.component';
 import {CardComponent} from './global/card/card.component';
 import {CelsiusPipe} from './pipes/celsius.pipe';
-import { FlagComponent } from './global/flag/flag.component';
+import {FlagComponent} from './global/flag/flag.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

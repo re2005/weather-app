@@ -1,1 +1,18 @@
-<p>home works!</p>
+<section class="section">
+    <div class="container" *ngIf="cities">
+        <div class="columns is-multiline">
+            <app-city-card *ngFor="let city of cities" [card]="city"
+                           [routerLink]="'/city/' + city.id"
+                           class="column is-full-mobile is-one-third-tablet is-one-fifth-fullhd"></app-city-card>
+
+        </div>
+
+    </div>
+
+    <div>
+        <div *ngIf="!cities">
+            <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+            Ooops! Something went wrong fetching the cities.
+        </div>
+    </div>
+</section>
