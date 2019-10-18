@@ -1,0 +1,36 @@
+<div class="card card-equal-height">
+    <div class="card-content">
+        <div class="media">
+            <div class="media-left">
+                <figure class="image is-48x48">
+                    <app-icon-weather [code]="card.iconCode"></app-icon-weather>
+                </figure>
+            </div>
+            <div class="media-content">
+                <p class="title is-5">
+                    {{card.name}}
+                    <app-flag [countryCode]="card.country"></app-flag>
+                </p>
+                <p class="subtitle is-6">
+                    <fa-icon [icon]="faTemperatureLow"></fa-icon>
+                    {{card.temperature | celsius}}
+                </p>
+            </div>
+        </div>
+
+        <div class="content">
+            {{card.description}}
+        </div>
+    </div>
+    <footer class="card-footer">
+        <span class="card-footer-item">
+            <fa-icon [icon]="faWind"
+                     class="icon-wind"></fa-icon>
+            {{card.windSpeed}} m/s
+        </span>
+        <span class="card-footer-item">
+            <fa-icon [icon]="faLocationArrow"
+                     [style.transform]="'rotate(' + (card.windDirection) + 'deg)'"></fa-icon>
+        </span>
+    </footer>
+</div>
