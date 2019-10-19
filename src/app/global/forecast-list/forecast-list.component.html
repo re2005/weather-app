@@ -1,12 +1,23 @@
 <div>
-    <h1 class="is-size-4">Weather forecast</h1>
+    <h1 class="is-size-4">Weather forecast in {{weather.name}}</h1>
     <div class="columns">
-        <div *ngFor="let item of forecast | slice:0:8"
+        <div *ngFor="let item of forecast | slice:sliceStart:sliceEnd"
              class="column">
             <app-icon-weather [code]="item.iconCode"
                               class="image is-48x48"></app-icon-weather>
             <span class="is-size-7 tag is-light has-text-weight-bold">{{item.temperature | celsius}}</span>
-            <span class="is-size-7">{{item.time | date: 'H:mm' }}</span>
+            <span class="is-size-7">{{item.time | date: 'E, H:mm' }}</span>
         </div>
+    </div>
+
+    <div class="navigation">
+        <p class="is-size-7 has-text-weight-bold">further forecast</p>
+        <button (click)="prev()" class="button is-light is-info is-small" [disabled]="sliceStart === 0">
+            <fa-icon [icon]="faCaretLeft"></fa-icon>
+        </button>
+
+        <button (click)="next()" class="button is-light is-info is-small" [disabled]="sliceEnd >= forecast.length">
+            <fa-icon [icon]="faCaretRight"></fa-icon>
+        </button>
     </div>
 </div>

@@ -1,5 +1,4 @@
 <section class="section">
-
     <nav class="level">
         <a routerLink="/"
            class="button is-info">
@@ -7,19 +6,22 @@
             Back
         </a>
     </nav>
-
     <div class="container" *ngIf="cityForecast">
         <div class="columns">
+
             <app-city-card *ngIf="cityWeather"
                            [card]="cityWeather"
                            class="column is-one-quarter"
             ></app-city-card>
 
             <app-forecast-list [forecast]="cityForecast"
+                               [weather]="cityWeather"
                                class="column"></app-forecast-list>
+
         </div>
     </div>
     <div *ngIf="!cityForecast">
         The city you're looking for wasn't found ;(
     </div>
+
 </section>
