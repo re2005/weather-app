@@ -1,4 +1,4 @@
-![WeatherApp](https://raw.githubusercontent.com/re2005/weather-app/master/src/assets/weather.png?token=AAWI7JPKD2XRNX57DQMZZX25VI5XQ "WeatherApp")
+![WeatherApp](https://www.notfound.com.br/off/weather-app/assets/weather.png "WeatherApp")
 
 
 # Welcome to WeatherApp!
