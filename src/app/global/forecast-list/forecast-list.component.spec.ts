@@ -4,8 +4,10 @@ import {ForecastListComponent} from './forecast-list.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CelsiusPipe} from '../../pipes/celsius.pipe';
 import {CityForecast} from '../../models/city-forecast.model';
+import {CityWeather} from '../../models/city-weather.model';
 
 const forecastMock = require('../../mocks/forecast-response.json');
+const weatherMock = require('../../mocks/weather-response.json');
 
 
 describe('ForecastListComponent', () => {
@@ -13,6 +15,7 @@ describe('ForecastListComponent', () => {
     let fixture: ComponentFixture<ForecastListComponent>;
 
     const forecast = new CityForecast(forecastMock);
+    const weather = new CityWeather(weatherMock);
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -26,6 +29,7 @@ describe('ForecastListComponent', () => {
         fixture = TestBed.createComponent(ForecastListComponent);
         component = fixture.componentInstance;
         component.forecast = [forecast, forecast, forecast];
+        component.weather = weather;
         fixture.detectChanges();
     });
 
