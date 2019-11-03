@@ -11,7 +11,7 @@ before_script:
 script:
   - ng lint
   - npm run test-headless
-  - ng build --prod --base-href https://re2005.github.io/weather-app/demo/
+  - ng build --prod --base-href https://re2005.github.io/weather-app/
 
 deploy:
   provider: pages
