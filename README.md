@@ -1,11 +1,11 @@
-![WeatherApp](https://www.notfound.com.br/off/weather-app/assets/weather.png "WeatherApp")
+![WeatherApp](https://re2005.github.io/weather-app/assets/weather.png "WeatherApp")
 
 
 # Welcome to WeatherApp!
 
-[DEMO](https://www.notfound.com.br/off/weather-app/)
-
 [![Build Status](https://travis-ci.com/re2005/weather-app.svg?branch=master)](https://travis-ci.com/re2005/weather-app)
+
+[DEMO](https://re2005.github.io/weather-app/)
 
 The app is kept as simple and lightweight as possible.
 It's using Bulma as css framework and FontAwesome for cool icons.
