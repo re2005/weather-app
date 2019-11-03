@@ -5,6 +5,8 @@
 
 [DEMO](https://www.notfound.com.br/off/weather-app/)
 
+[![Build Status](https://travis-ci.com/re2005/weather-app.svg?branch=master)](https://travis-ci.com/re2005/weather-app)
+
 The app is kept as simple and lightweight as possible.
 It's using Bulma as css framework and FontAwesome for cool icons.
 
