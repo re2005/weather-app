@@ -8,7 +8,7 @@ import {IApiResponse} from './api-response.interfaces';
 })
 export class ApiService {
 
-    private readonly apiUrl: string = 'http://api.openweathermap.org/data/2.5/';
+    private readonly apiUrl: string = '//api.openweathermap.org/data/2.5/';
     private readonly apiId: string = '&appid=4217e0dc20b9dfb00bc4a701fbaa637c';
     private readonly units: string = '&units=metric';
 
