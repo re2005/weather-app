@@ -1,7 +1,6 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {first} from 'rxjs/operators';
 import {CityWeather, ICityWeatherResponse} from '../../models/city-weather.model';
 import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
 
@@ -10,9 +9,8 @@ import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
 
-    private ngUnsubscribe: Subject<void> = new Subject<void>();
     public cities: Array<ICityWeatherResponse>;
     private ids: Array<number>;
     public readonly faExclamationTriangle = faExclamationTriangle;
@@ -28,7 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     fetchApiData(): void {
         this.apiService.getCitiesWeatherById(this.ids)
-            .pipe(takeUntil(this.ngUnsubscribe))
+            .pipe(first())
             .subscribe(d => {
                 this.cities = d.list.map(r => new CityWeather(r));
             });
@@ -39,8 +37,4 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.fetchApiData();
     }
 
-    ngOnDestroy(): void {
-        this.ngUnsubscribe.next();
-        this.ngUnsubscribe.complete();
-    }
 }

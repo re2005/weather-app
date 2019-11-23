@@ -1,7 +1,6 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 import {CityWeather, ICityWeatherResponse} from '../../models/city-weather.model';
 
 @Component({
@@ -9,10 +8,9 @@ import {CityWeather, ICityWeatherResponse} from '../../models/city-weather.model
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit, OnDestroy {
+export class SearchComponent implements OnInit {
 
     @Output() sendCityToParent = new EventEmitter<number>();
-    private ngUnsubscribe: Subject<void> = new Subject<void>();
     public cities: Array<ICityWeatherResponse>;
     public searchInput: string;
     public hasError = false;
@@ -36,7 +34,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             return;
         }
         this.apiService.getCitiesByName(this.searchInput)
-            .pipe(takeUntil(this.ngUnsubscribe))
+            .pipe(first())
             .subscribe(d => {
                     this.cities = d.list.map(r => new CityWeather(r));
                 },
@@ -52,10 +50,5 @@ export class SearchComponent implements OnInit, OnDestroy {
         if (event.key === 'Enter') {
             this.search();
         }
-    }
-
-    ngOnDestroy(): void {
-        this.ngUnsubscribe.next();
-        this.ngUnsubscribe.complete();
     }
 }
